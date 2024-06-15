@@ -1,23 +1,20 @@
-import { BrowserRouter, Routes } from "react-router-dom"
-import Navbar from "./Navbar/Navbar"
-import Header from './Pages/Header'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./Navbar/Navbar";
+import Header from './Pages/Header';
+import Register from "./Pages/Register";
 
 function App() {
-
-
   return (
-   <>
-   <BrowserRouter>
-<Navbar/>
-<Header/>
-<Routes>
-
-  
-</Routes>
-   
-   </BrowserRouter>
-   </>
-  )
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Header />} />
+          <Route path="/register" element={<Register/>} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;

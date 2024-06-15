@@ -9,9 +9,14 @@ const Navbar = () => {
   const [dark, setDark] = useState(true);
   const [language, setLanguage] = useState("en");
   const [text, setText] = useState(translations.en);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     setText(translations[language]);
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUser(storedUser);
+    }
   }, [language]);
 
   const toggleMenu = () => {
@@ -51,36 +56,31 @@ const Navbar = () => {
         {/* Desktop navigation */}
         <ul className="md:flex hidden uppercase items-baseline gap-8  font-[Poppins]">
           <NavLinks />
-          <h1>
-            Login
-          </h1>
+          <NavLink to="/register">
+            <h1>
+              {user ? user.firstName : "Login"}
+            </h1>
+          </NavLink>
         </ul>
-        <div className="pt-[5px]">
+        <div className="pt-[5px] ">
 
-        <select className="language-selector hidden md:block text-[black]">
-          <option value="#">  <button onClick={() => changeLanguage("en")}>English</button></option>
-       
-        <option value="#"> <button onClick={() => changeLanguage("ru")}>Русский</button></option>
-        <option value="#"> <button onClick={() => changeLanguage("uz")}>Ozbek</button></option>
-       
-      </select>
+          <select className="language-selector hidden md:block text-[black] w-[100px] h-[30px] rounded pb-[5px] border-none ">
+            <option value="#" onClick={() => changeLanguage("en")}>English</option>
+            <option value="#" onClick={() => changeLanguage("ru")}>Русский</option>
+            <option value="#" onClick={() => changeLanguage("uz")}>Ozbek</option>
+          </select>
         </div>
 
         {/* Mobile nav */}
-     
-
         <ul
           className={`md:hidden rang fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4 duration-500 text-[#fff] ${
             open ? "left-0 bag" : "left-[-100%] bag "
           } cursor-pointer `}
         >
-         
           <NavLinks />
           <div className="py-5"></div>
         </ul>
       </div>
-
- 
     </nav>
   );
 };
