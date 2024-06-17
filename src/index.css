@@ -70,11 +70,12 @@ ul {
 }
 
 header {
-    background-image: url(./assets/Image/employment-contracts-faq-4815368171.jpg);
+    background-image: url(./assets/Image/rasm.png);
     width: 100%;
     height: 70vh;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 10px 20px 30px 40px;
     margin-top: 90px;
 }
 
