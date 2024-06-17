@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import NavLinks from "./NavLinks";
+import Logo from "../assets/Image/LOGO.png"
 
 import translations from "../Lang/Lang.json";
 
@@ -36,7 +37,7 @@ const Navbar = () => {
       <div className="flex items-center container font-medium justify-between">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between">
           <NavLink to="/">
-            <img src="" alt="logo" className="md:cursor-pointer  h-9 rounded-[50%]" />
+            <img src={Logo} alt="logo" className="md:cursor-pointer  h-[60px] object-cover w-[120px]" />
           </NavLink>
           {/* Mobile menu button */}
           <form>

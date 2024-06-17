@@ -15,7 +15,10 @@ function App() {
           <Route path="/register" element={<Register/>} />
         </Routes>
       </BrowserRouter>
+      <div className="pt-[50px]">
+
         <Swipper/>
+      </div>
     
     </>
   );

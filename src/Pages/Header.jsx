@@ -2,7 +2,8 @@ import React from 'react';
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import StarIcon from '@mui/icons-material/Star'; 
-import Img from"../assets/Image/rasm.png"
+import Img from"../assets/Image/bakground.png"
+
 
 const labels = {
   0.5: 'Useless',
@@ -30,6 +31,10 @@ const Header = () => {
       <header>
         <div className="container">
           {/* Header content can be added here */}
+          <div className="flex items-center justify-center pt-[200px] ">
+            <input type="text" name="" id="" className='text-[#000]' />
+
+          </div>
         </div>
       </header>
       <section className='pt-[30px] pb-[20px] bagi'>
