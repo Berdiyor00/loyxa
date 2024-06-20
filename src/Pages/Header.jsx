@@ -5,7 +5,9 @@ import StarIcon from '@mui/icons-material/Star';
 import Typography from '@mui/material/Typography';
 import Slider from '@mui/material/Slider';
 import Img from "../assets/Image/bakground.png";
+import Texnikum from "../assets/Image/texnikum.jpg"
 import { NavLink } from 'react-router-dom';
+import Swipper from './Swipper';
 
 const labels = {
   0.5: 'Useless',
@@ -20,23 +22,22 @@ const labels = {
   5: 'Excellent+',
 };
  
-
 function getLabelText(value) {
   return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
 }
+
+const universities = [
+  { id: 1, name: "Xalqaro innovatsion tibbiyot Texnikumi Nodavlat Ta'lim Muassasasi", price: 500, img: Texnikum },
+  { id: 2, name:"Xalqaro innovatsion tibbiyot Texnikumi Nodavlat Ta'lim Muassasasi", price: 600, img: Img },
+  { id: 3, name: "Otm 3", price: 400, img: Img },
+  { id: 4, name: "Otm 4", price: 300, img: Img },
+];
 
 const Header = () => {
   const [value, setValue] = useState(2);
   const [hover, setHover] = useState(-1);
   const [searchQuery, setSearchQuery] = useState('');
-  const [priceFilter, setPriceFilter] = useState(600); // Default max price filter
-  const [universities, setUniversities] = useState([
-    { name: "Otm 1", price: 500, img: Img },
-    { name: "Otm 2", price: 600, img: Img },
-    { name: "Otm 3", price: 400, img: Img },
-    { name: "Otm 4", price: 300, img: Img },
-
-  ]);
+  const [priceFilter, setPriceFilter] = useState(600);
 
   const filteredUniversities = universities
     .filter(university => university.name.toLowerCase().includes(searchQuery.toLowerCase().trim()))
@@ -75,18 +76,16 @@ const Header = () => {
 
       <section className='pt-[30px] pb-[20px] bagi'>
         <div className="container">
+          
           <div className="flex items-center justify-between flex-wrap gap-[30px]">
-            {filteredUniversities.map((university, index) => (
-              <div key={index} className="md:flex items-start flex-wrap hover:scale-110 shadows transition-all cursor-pointer bg-white text-[#000] md:rounded-tl-[10px] rounded-bl-[10px]">
-              <NavLink to="/layout">
-
+            {filteredUniversities.map((university) => (
+              <NavLink key={university.id} to={`/university/${university.id}`} className="md:flex items-start flex-wrap hover:scale-110 shadows transition-all cursor-pointer bg-white text-[#000] md:rounded-tl-[10px] rounded-bl-[10px]">
                 <img src={university.img} alt={university.name} className='md:w-[340px] object-cover md:h-[250px] md:rounded-tl-[10px] rounded-bl-[10px]' />
-              </NavLink>
                 <div className="flex flex-col items-center justify-center md:pt-[30px] md:pl-[50px] pr-[100px]">
-                  <h1>{university.name}</h1>
-                  <span>${university.price}</span>
+                  <h1 className=' pb-[20px] pt-[20px] md:max-w-[200px] unversityname'>{university.name}</h1>
+                
                 </div>
-              </div>
+              </NavLink>
             ))}
           </div>
         </div>
@@ -115,7 +114,6 @@ const Header = () => {
           </div>
         </div>
       </section>
-
       <section>
         <div className="container">
           {/* Additional content can be added here */}
@@ -140,6 +138,7 @@ const Header = () => {
           <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
         )}
       </Box>
+      <Swipper/>
     </>
   );
 }
